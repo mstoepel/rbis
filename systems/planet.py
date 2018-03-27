@@ -16,9 +16,23 @@ class Planet:
 
         return math.hypot((self.x - other.x), (self.y - other.y))
 
+class Resource:
+    def __init__(self, name, planet, amount, demand_coeff, x, y):
+        self.name = name
+        self.planet = planet
+        self.amount = amount
+        self.demand_coeff = demand_coeff
+        self.x = x
+        self.y = y
 
-# p1 =  Planet('alpha', 100000, 2000000, 50, 100)
-# pl2 = Planet('alpha', 50000, 100000, 20, 200)
-#
-# dist = p1.distance(pl2)
-# print(dist)
+    def add_good(self, count):
+        self.amount += count
+
+    def remove_good(self, count):
+        if self.amount > 0:
+            if self.amount >= count:
+                self.amount -= count
+            else:
+                self.amount = 0
+        else:
+            self.amount = 0
