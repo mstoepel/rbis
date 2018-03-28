@@ -1,7 +1,9 @@
 import math
+import random
 
 class Planet:
-    def __init__(self, system, pop, wealth, x, y):
+    def __init__(self, name, system, pop, wealth, x, y):
+        self.name = name
         self.system = system
         self.pop = pop
         self.wealth = wealth
@@ -16,6 +18,13 @@ class Planet:
 
         return math.hypot((self.x - other.x), (self.y - other.y))
 
+    def update(self, dt):
+        self.wealth += dt * 1000 if random.random() > 0.5 else dt * -1000
+
+    def __repr__(self):
+        return '{}'.format(self.name)
+
+
 class Resource:
     def __init__(self, name, planet, amount, demand_coeff, x, y):
         self.name = name
@@ -24,15 +33,38 @@ class Resource:
         self.demand_coeff = demand_coeff
         self.x = x
         self.y = y
+        planet.contains[self] = amount
 
-    def add_good(self, count):
+    def add_supply(self, count):
         self.amount += count
+        self.planet.contains[self] = self.amount
 
-    def remove_good(self, count):
-        if self.amount > 0:
-            if self.amount >= count:
-                self.amount -= count
-            else:
-                self.amount = 0
-        else:
-            self.amount = 0
+    def remove_supply(self, count):
+        self.amount -= count
+        self.amount = max(0, self.amount)
+
+    def __repr__(self):
+        return ''.format(self.name)
+
+class Iron(Resource):
+
+    register = []
+    total = 0
+
+    def __init__(self, name, planet, amount, demand_coeff, x, y):
+        super().__init__(name, planet, amount, demand_coeff, x, y)
+
+        self.register.append(self)
+
+    @property
+    def total(self):
+        pass
+
+    @classmethod
+    def calc_total(cls):
+        cls.total = 0
+        for i in cls.register:
+            cls.total += i.amount
+
+    def __repr__(self):
+        return '{0}: {1}'.format(self.name, self.planet)
