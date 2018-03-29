@@ -24,6 +24,13 @@ class Planet:
     def __repr__(self):
         return '{}'.format(self.name)
 
+class Population:
+    def __init__(self, planet, amount, demographic):
+        self.planet = planet
+        self.amount = amount
+        self.demographic = demographic
+
+
 
 class Resource:
     def __init__(self, name, planet, amount, demand_coeff, x, y):
