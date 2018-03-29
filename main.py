@@ -23,3 +23,5 @@ print(planet1.contains)
 print(planet2.contains)
 
 print(alpha.planets)
+
+print(iron1.system_demand)

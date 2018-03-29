@@ -56,6 +56,8 @@ class Resource:
 class Iron(Resource):
 
     registry = []
+    system_demand = 0
+    universal_demand = 0
 
     def __init__(self, name, planet, amount, demand_coeff, x, y):
         super().__init__(name, planet, amount, demand_coeff, x, y)
