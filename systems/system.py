@@ -6,8 +6,10 @@ class SolarSystem:
         self.ships = []
         self.name = name
 
-    def add_planet(self, pop, wealth, x, y):
-        self.planets.append(Planet(self.name, pop, wealth, x, y))
+    def add_planet(self, planets):
+        self.planets.append(planets)
+        for planet in planets:
+            setattr(self, planet.name, planet)
 
     def register_ship(self, ship):
         self.ships.append(ship)
