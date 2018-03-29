@@ -55,23 +55,16 @@ class Resource:
 
 class Iron(Resource):
 
-    register = []
-    total = 0
+    registry = []
 
     def __init__(self, name, planet, amount, demand_coeff, x, y):
         super().__init__(name, planet, amount, demand_coeff, x, y)
 
-        self.register.append(self)
+        self.registry.append(self)
 
     @property
     def total(self):
-        pass
-
-    @classmethod
-    def calc_total(cls):
-        cls.total = 0
-        for i in cls.register:
-            cls.total += i.amount
+        return sum([i.amount for i in self.registry])
 
     def __repr__(self):
         return '{0}: {1}'.format(self.name, self.planet)
