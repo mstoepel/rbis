@@ -1,0 +1,2 @@
+jsonpickle==0.9.6
+tornado==4.5.1

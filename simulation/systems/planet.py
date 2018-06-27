@@ -1,6 +1,7 @@
 import math
 import random
 
+
 class Planet:
     def __init__(self, name, system, pop, wealth, x, y):
         self.name = name
@@ -23,6 +24,7 @@ class Planet:
 
     def __repr__(self):
         return '{}'.format(self.name)
+
 
 class Population:
     def __init__(self, planet, amount, demographic):

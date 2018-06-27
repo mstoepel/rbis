@@ -1,5 +1,5 @@
 from unittest import TestCase
-from systems.planet import Planet, Resource, Iron
+from simulation.systems.planet import Planet, Resource, Iron
 
 class TestPlanet(TestCase):
 

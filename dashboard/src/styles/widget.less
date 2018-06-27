@@ -1,0 +1,24 @@
+.widget {
+  flex: 1 1 auto;
+  display: flex;
+  margin: 0 1em 1em 1em;
+  flex-flow: column nowrap;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  h4 {
+    text-transform: lowercase;
+    margin: 0 0 .25em 0;
+    color: #444;
+    flex: 0 0 17px;
+  }
+
+  .widget-body {
+    flex: 1 1 auto;
+    border: 1px #333 solid;
+    padding: 1em;
+    overflow-y: scroll;
+  }
+}

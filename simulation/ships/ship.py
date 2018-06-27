@@ -1,13 +1,17 @@
 import math
 import random
 
+from simulation import BaseObject
 
-class Ship:
+
+class Ship(BaseObject):
     def __init__(self, system, x, y, speed=10):
+        super().__init__()
 
         self.system = system
         self.x = x
         self.y = y
+        self.contains = {}
         self.speed = speed
 
         self.destination = None
